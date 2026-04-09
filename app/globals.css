@@ -1,0 +1,280 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Mea+Culpa&display=swap");
+@import "tailwindcss";
+
+:root {
+  --background: #050505;
+  --foreground: #f7f2e8;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  background:
+    radial-gradient(circle at 50% 42%, rgba(255, 201, 94, 0.08), transparent 18%),
+    radial-gradient(circle at 22% 28%, rgba(60, 140, 255, 0.12), transparent 22%),
+    radial-gradient(circle at 78% 24%, rgba(154, 92, 255, 0.12), transparent 24%),
+    linear-gradient(180deg, #020202 0%, #050505 45%, #020202 100%);
+  color: var(--foreground);
+  font-family: "Cormorant Garamond", serif;
+  overflow-x: hidden;
+}
+
+body {
+  min-height: 100vh;
+}
+
+button {
+  font: inherit;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.luxury-stage {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  isolation: isolate;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 20;
+  width: min(1400px, 100%);
+  padding: 2rem 1.25rem 3rem;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.signature-title {
+  font-family: "Mea Culpa", cursive;
+  font-size: clamp(4.8rem, 12vw, 10.5rem);
+  line-height: 0.9;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  width: 100%;
+  max-width: 1500px;
+  color: rgba(255, 247, 230, 0.96);
+  text-shadow:
+    0 0 10px rgba(255, 220, 160, 0.16),
+    0 0 22px rgba(255, 210, 120, 0.12),
+    0 0 50px rgba(255, 255, 255, 0.06);
+  margin: 0;
+  pointer-events: none;
+}
+
+.start-button {
+  position: relative;
+  z-index: 50;
+  margin-top: 2.1rem;
+  border: none;
+  border-radius: 999px;
+  padding: 1rem 2rem;
+  min-width: 240px;
+  color: #1d1608;
+  background: linear-gradient(135deg, #9e7222 0%, #e9c56d 38%, #fff0b8 50%, #c79633 100%);
+  box-shadow:
+    0 12px 30px rgba(201, 151, 51, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35);
+  font-size: 1.05rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 220ms ease, box-shadow 220ms ease, filter 220ms ease;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  user-select: none;
+}
+
+.start-button:active {
+  transform: scale(0.98);
+}
+
+.start-button:hover {
+  transform: translateY(-2px) scale(1.02);
+  filter: brightness(1.03);
+  box-shadow:
+    0 18px 40px rgba(201, 151, 51, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.45);
+}
+
+.flow-wrap {
+  position: relative;
+  z-index: 50;
+  width: min(1200px, 100%);
+  padding: 1rem;
+}
+
+.flow-title {
+  font-size: clamp(1.5rem, 2vw, 2.2rem);
+  font-weight: 600;
+  color: rgba(251, 244, 228, 0.92);
+  margin-bottom: 1.5rem;
+}
+
+.flavor-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.85rem;
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+.flavor-pill {
+  position: relative;
+  z-index: 50;
+  border: 1px solid rgba(255, 230, 180, 0.18);
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(255, 248, 235, 0.94);
+  border-radius: 999px;
+  padding: 0.85rem 1.3rem;
+  cursor: pointer;
+  backdrop-filter: blur(6px);
+  transition: transform 180ms ease, background 180ms ease, border-color 180ms ease;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  user-select: none;
+}
+
+.flavor-pill:active {
+  transform: scale(0.98);
+}
+
+.flavor-pill:hover {
+  transform: translateY(-1px);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 221, 150, 0.3);
+}
+
+.result-text {
+  margin-top: 2rem;
+  font-size: clamp(1.1rem, 1.6vw, 1.5rem);
+  color: rgba(255, 240, 220, 0.95);
+}
+
+.result-text span {
+  color: #f1d188;
+}
+
+.hookah-wrap {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.hookah-svg {
+  width: min(36vw, 430px);
+  min-width: 220px;
+  max-width: 430px;
+  opacity: 0.8;
+  filter:
+    drop-shadow(0 0 22px rgba(233, 190, 92, 0.16))
+    drop-shadow(0 0 60px rgba(98, 143, 255, 0.08));
+  animation: floatHookah 8s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.ambient {
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(60px);
+  opacity: 0.42;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.ambient-left {
+  width: 42vw;
+  height: 42vw;
+  left: -10vw;
+  top: 10vh;
+  background: radial-gradient(circle, rgba(68, 132, 255, 0.24), transparent 65%);
+  animation: driftLeft 10s ease-in-out infinite alternate;
+}
+
+.ambient-right {
+  width: 40vw;
+  height: 40vw;
+  right: -8vw;
+  top: 6vh;
+  background: radial-gradient(circle, rgba(173, 95, 255, 0.24), transparent 65%);
+  animation: driftRight 12s ease-in-out infinite alternate;
+}
+
+.ambient-bottom {
+  width: 46vw;
+  height: 24vw;
+  left: 50%;
+  bottom: 5vh;
+  transform: translateX(-50%);
+  background: radial-gradient(circle, rgba(255, 181, 76, 0.2), transparent 68%);
+  animation: pulseBottom 8s ease-in-out infinite;
+}
+
+@keyframes floatHookah {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-7px);
+  }
+}
+
+@keyframes driftLeft {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  100% {
+    transform: translate(4vw, 2vh) scale(1.08);
+  }
+}
+
+@keyframes driftRight {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  100% {
+    transform: translate(-4vw, 2vh) scale(1.1);
+  }
+}
+
+@keyframes pulseBottom {
+  0%, 100% {
+    opacity: 0.22;
+    transform: translateX(-50%) scale(1);
+  }
+  50% {
+    opacity: 0.34;
+    transform: translateX(-50%) scale(1.06);
+  }
+}
+
+@media (max-width: 900px) {
+  .signature-title {
+    font-size: clamp(3.4rem, 18vw, 7rem);
+  }
+
+  .hookah-svg {
+    width: min(54vw, 320px);
+  }
+
+  .start-button {
+    min-width: 210px;
+  }
+}
