@@ -1,3 +1,4 @@
+import { supabase } from "../lib/supabase";
 "use client";
 
 import { useState } from "react";
@@ -10,14 +11,35 @@ export default function Home() {
     setStart(true);
   };
 
-  const genereaza = (tip: string) => {
-    if (tip === "fructe") setRezultat("🍓 Căpșuni • 🍉 Pepene • ❄️ Ice");
-    if (tip === "dulce") setRezultat("🍇 Struguri • 🍯 Miere • 🍒 Cireșe");
-    if (tip === "acru") setRezultat("🍋 Lămâie • 🍏 Măr verde • Kiwi");
-    if (tip === "desert") setRezultat("🍫 Ciocolată • 🍦 Vanilie • Caramel");
-    if (tip === "fresh") setRezultat("❄️ Ice • Mentă • Lime");
-    if (tip === "exotic") setRezultat("🥭 Mango • Fructul pasiunii • Ananas");
-  };
+const genereaza = async (tip: string) => {
+  let aroma = "";
+
+  if (tip === "fructe") aroma = "🍓 Căpșuni • 🍉 Pepene • Ice";
+  if (tip === "dulce") aroma = "🍇 Struguri • 🍯 Miere • 🍒 Cireșe";
+  if (tip === "acru") aroma = "🍋 Lămâie • 🍏 Măr verde • 🥝 Kiwi";
+  if (tip === "desert") aroma = "🍫 Ciocolată • 🍦 Vanilie • Caramel";
+  if (tip === "fresh") aroma = "❄️ Ice • 🌿 Mentă • Lime";
+  if (tip === "exotic") aroma = "🥭 Mango • Fructul pasiunii • 🍍 Ananas";
+
+  setRezultat(aroma);
+
+  const tableId = 1; // temporar
+
+  const { error } = await supabase.from("orders").insert([
+    {
+      aroma: aroma,
+      status: "pending",
+      table_id: tableId,
+    },
+  ]);
+
+  if (error) {
+    console.error("Eroare:", error);
+    alert("Eroare la trimitere comandă");
+  } else {
+    console.log("Comandă salvată");
+  }
+};
 
   const optiuni = ["fructe", "dulce", "acru", "desert", "fresh", "exotic"];
 
