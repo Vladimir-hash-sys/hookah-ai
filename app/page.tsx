@@ -23,7 +23,12 @@ const genereaza = async (tip: string) => {
 
   setRezultat(aroma);
 
-  const tableId = 1; // temporar
+  const tableId = 1;
+
+  if (!supabase) {
+    alert("Configurația Supabase lipsește.");
+    return;
+  }
 
   const { error } = await supabase.from("orders").insert([
     {
