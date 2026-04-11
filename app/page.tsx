@@ -1,6 +1,6 @@
-import { supabase } from "../lib/supabase";
 "use client";
 
+import { supabase } from "../lib/supabase";
 import { useState } from "react";
 
 export default function Home() {
